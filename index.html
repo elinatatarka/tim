@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Цифровая эксплуатация корпуса поточных аудиторий НИУ МГСУ</title>
+  <style>
+    :root {
+      --primary: #003087;
+      --accent: #00b4d8;
+      --dark: #0a1428;
+      --glass: rgba(255, 255, 255, 0.07);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      line-height: 1.6;
+      color: #eee;
+      background: linear-gradient(135deg, #0a1428 0%, #001f4d 100%);
+      background-attachment: fixed;
+    }
+
+    /* Более строгий шрифт для заголовков */
+    h1, h2, h3 {
+      font-family: 'Georgia', serif;
+      font-weight: bold;
+    }
+
+    header {
+      height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
+                  url('roma.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      margin-bottom: 1rem;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      margin-bottom: 2.5rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 35px;
+      margin: 10px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .btn-primary { background: var(--accent); color: #000; border: none; }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,180,216,0.3); }
+
+    .btn-secondary { background: transparent; color: white; border: 2px solid var(--accent); }
+    .btn-secondary:hover { background: var(--accent); color: #000; }
+
+    section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
+
+    h2 { font-size: 2.5rem; text-align: center; margin-bottom: 3rem; color: white; }
+
+    /* О проекте - Текст с красной строки */
+    .about-text {
+      font-size: 1.15rem;
+      max-width: 950px;
+      margin: 0 auto 30px;
+      text-align: justify;
+    }
+
+    .about-text p {
+      text-indent: 30px; /* Красная строка */
+      margin-bottom: 15px;
+    }
+
+    .info-box {
+      background: var(--glass);
+      padding: 40px;
+      border-radius: 30px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    /* Карточки скачивания - выравнивание кнопок */
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .download-card {
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      padding: 40px 30px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      display: flex;
+      flex-direction: column; /* Делаем колонку */
+      justify-content: space-between; /* Кнопка уйдет вниз */
+    }
+
+    .download-card div {
+      margin-bottom: 20px; /* Отступ текста от кнопки */
+    }
+
+    .download-card h3 { color: var(--accent); margin-bottom: 10px; }
+
+    /* Галерея */
+    .gallery-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      background: rgba(0,0,0,0.3);
+    }
+    .slides { display: flex; transition: transform 0.6s ease; }
+    .slide { min-width: 100%; padding: 40px; text-align: center; }
+    .slide img {
+      max-width: 100%;
+      height: 450px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .gallery-controls { display: flex; justify-content: center; gap: 20px; margin-top: 30px; }
+    .control-btn {
+      background: var(--glass);
+      color: white;
+      border: 1px solid var(--accent);
+      padding: 10px 25px;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #000;
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    /* Слоган в одну строку */
+    .year-accent {
+      font-size: clamp(1.5rem, 4vw, 3rem); /* Уменьшил размер */
+      font-weight: 800;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0.4;
+      line-height: 1.2;
+      margin-top: 10px;
+      white-space: nowrap; /* Не дает переноситься */
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="hero-content">
+      <h1>Цифровой двойник корпуса поточных аудиторий</h1>
+      <p class="subtitle">Введение корпуса "Ромашка" НИУ МГСУ в цифровую эксплуатацию на основе BIM-технологий</p>
+      <div>
+        <a href="#downloads" class="btn btn-primary">Материалы</a>
+        <a href="#gallery" class="btn btn-secondary">Галерея</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>О проекте</h2>
+    <div class="info-box">
+      <div class="about-text">
+        <p>Цель работы — показать процесс введения корпуса поточных аудиторий НИУ МГСУ («Ромашка») в цифровую эксплуатацию. Цифровая эксплуатация представляет собой современный подход к управлению жизненным циклом здания на этапе использования с помощью комплексного применения технологии цифрового двойника.</p>
+        <p>Данная технология решает ключевые задачи отрасли: планирование ремонтных работ на основе реального состояния объекта, высокоточный учёт и контроль инженерного оборудования, а также быструю локализацию проблем для их оперативного решения.</p>
+        <p>Переход на цифровую эксплуатацию на базе BIM-модели значительно повышает эффективность, безопасность и экономическую устойчивость социально значимых объектов, таких как здания образовательных организаций.</p>
+      </div>
+
+      <div class="info-grid">
+        <div>
+          <h4 style="color: var(--accent)">🔍 Контроль</h4>
+          <p>Автоматизированный учет систем и узлов здания.</p>
+        </div>
+        <div>
+          <h4 style="color: var(--accent)">🛠 Ремонт</h4>
+          <p>Интеграция данных в эксплуатационную среду Explo-IT.</p>
+        </div>
+        <div>
+          <h4 style="color: var(--accent)">📊 BIM</h4>
+          <p>Актуализация модели по чертежам и натурным обследованиям.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="downloads">
+    <h2>Файлы проекта</h2>
+    <div class="download-grid">
+      <div class="download-card">
+        <div>
+          <h3>BPMN-схема</h3>
+          <p>Алгоритм процессов введения в эксплуатацию</p>
+        </div>
+        <a href="bpmn.jpg" download="BPMN_Scheme_MGSU.jpg" class="btn btn-primary">Скачать JPG</a>
+      </div>
+      
+      <div class="download-card">
+        <div>
+          <h3>Модель JSON</h3>
+          <p>Цифровая структура объекта для систем управления</p>
+        </div>
+        <a href="ФСП.json" download="Model_FSP.json" class="btn btn-primary">Скачать JSON</a>
+      </div>
+      
+      <div class="download-card">
+        <div>
+          <h3>Атрибутивный отчёт</h3>
+          <p>Технические характеристики оборудования (Pset)</p>
+        </div>
+        <a href="3.xlsx" download="Technical_Report.xlsx" class="btn btn-primary">Скачать XLSX</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2>Галерея реализации</h2>
+    <div class="gallery-container">
+      <div class="slides" id="slides">
+        <div class="slide">
+          <img src="bpmn.jpg" alt="BPMN">
+          <p class="slide-caption"><strong>Этап 1:</strong> Проектирование схемы бизнес-процессов.</p>
+        </div>
+        <div class="slide">
+          <img src="pic1.png" alt="Renga Model">
+          <p class="slide-caption"><strong>Этап 2:</strong> Моделирование в среде Renga Professional.</p>
+        </div>
+        <div class="slide">
+          <img src="https://via.placeholder.com/1200x700/003087/ffffff?text=Larix+Manager" alt="Larix">
+          <p class="slide-caption"><strong>Этап 3:</strong> Анализ коллизий и атрибутов в Larix.</p>
+        </div>
+        <div class="slide">
+          <img src="https://via.placeholder.com/1200x700/0a1428/ffffff?text=Explo-IT+Interface" alt="Explo-IT">
+          <p class="slide-caption"><strong>Этап 4:</strong> Финальная интеграция в Explo-IT.</p>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-controls">
+      <button class="control-btn" onclick="prevSlide()">⬅ Назад</button>
+      <button class="control-btn" onclick="nextSlide()">Вперед ➡</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>2026 ТИМ-ЛИДЕРЫ</p>
+    <div class="year-accent">НИУ МГСУ — Цифровое строительство</div>
+  </footer>
+
+  <script>
+    let currentSlide = 0;
+    const slidesContainer = document.getElementById('slides');
+    const totalSlides = document.querySelectorAll('.slide').length;
+
+    function showSlide() {
+      slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      showSlide();
+    }
+
+    setInterval(nextSlide, 10000);
+  </script>
+
+</body>
+</html>
